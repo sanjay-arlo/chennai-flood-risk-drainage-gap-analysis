@@ -1,19 +1,22 @@
 # BA / DA Delivery Pipeline
 
 ## Business question
-Which Chennai wards combine flood exposure with drainage-completion gaps, and where should monsoon investment be prioritised?
+Which wards combine flood exposure with drainage-completion gaps, and where should monsoon investment be prioritised?
 
-## 01 — Excel
-Clean ward-level records, reconcile claimed vs resident-reported drainage completion, inspect outliers, and create a ward exception view. Excel is the first-pass business control layer.
+## 01 — Excel — mandatory first pass
+Clean ward records, reconcile claimed vs resident-reported completion, validate fields, use formulas/pivots, calculate completion gaps and build an exception queue.
 
-## 02 — SQL
-Calculate flood incidents, completion gaps, risk score, budget efficiency and ranked exception queues using reproducible queries.
+## 02 — Python (Pandas + NumPy) — optional
+Use Python for repeatable EDA, anomaly checks, gap distributions or automated data-quality profiling when the dataset or task benefits from it. It is an optional accelerator, not a forced step.
 
-## 03 — Power BI
-Build an analytical model and executive story: Risk Overview → Drainage Gap → Ward Investment → Monsoon Scenario. Use ward drill-through and geography slicers.
+## 03 — SQL — mandatory analytical layer
+Use joins, CTEs, aggregations and window functions for risk KPIs, ward rankings, peer comparisons and exception queues.
 
-## 04 — Decision
-Translate risk into an investment queue with priority, budget, owner, intervention and expected risk reduction.
+## 04 — Power BI — mandatory decision interface
+Build the analytical model, DAX measures, slicers and drill-through: Risk Overview → Drainage Gap → Ward Investment → Monsoon Scenario.
+
+## 05 — Decision — mandatory outcome
+Convert risk into a management queue with priority, owner, action, budget implication, expected risk reduction and escalation trigger.
 
 ## Acceptance criteria
-All KPI totals reconcile to source data; completion-gap logic is transparent; scenarios are labelled illustrative; no synthetic figure is presented as official GCC data.
+KPI totals reconcile across stages; completion-gap logic is transparent; scenario assumptions are labelled illustrative; synthetic records are never presented as official GCC data.
